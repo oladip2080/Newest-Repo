@@ -23,8 +23,7 @@ pipeline {
        sh "mvn -f MyWebApp/pom.xml sonar:sonar"
             }
         }
-       }
-        stage('Deploy to Tomcat') {
+       stage('Deploy to Tomcat') {
             steps {
                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.222.173.7:8080/')], contextPath: 'path', war: '**/*.war'
             }
